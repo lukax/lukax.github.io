@@ -1,11 +1,11 @@
 
 (function($) {
 
-	$("#item-detail-modal").easyModal();
-	$("#item-detail-btn").click(function() {
-		console.log("asdf");
-		$("#item-detail-modal").trigger('openModal');
-	});
+	// $("#item-detail-modal").easyModal();
+	// $("#item-detail-btn").click(function() {
+	// 	console.log("asdf");
+	// 	$("#item-detail-modal").trigger('openModal');
+	// });
 
 	$("#partners-logo").flexisel({
 	    visibleItems: 4,
@@ -38,23 +38,28 @@
 	  });
 
 
-	$(function(){
-        $(".mission").typed({
-            strings: [
+    (function() {
+	    var quotes = [
 	            "Novas tecnologias para o setor de óleo e gás", 
 	            "Os melhores produtos do mercado para sua aplicação",
 	            "Equipamentos de Prospecção, produção e medição",
 	            "Assistência técnica de ponta",
 	            "Comissionamentos e treinamentos",
 	            "Calibrações, avaliações e manutenção"
-            ],
-            startDelay: 1000,
-            typeSpeed: 40,
-            loop: true,
-            showCursor: true,
-            backSpeed: 0,
-        });
-    });
+            ];
+	    var quoteIndex = -1;
+
+	    function showNextQuote() {
+	        ++quoteIndex;
+	        $(".mission").text(quotes[quoteIndex % quotes.length])
+	            .fadeIn(1000)
+	            .delay(2000)
+	            .fadeOut(500, showNextQuote);
+	    }
+
+	    showNextQuote();
+
+	})();
 
 	var settings = {
 
